@@ -1,0 +1,13 @@
+<h1 class="mt-4">Admin Dashboard</h1>
+<p class="lead mb-3">Welcome <%= user.name %></p>
+<p class="lead mb-3">Current Active Sessions:</p>
+<% for (let key in store.sessions) { %>
+    <p class="lead mb-3">
+        SessionID: <%= key %></br>
+        <% let sessionItem = JSON.parse(store.sessions[key]);  %>
+        UserId: <%= sessionItem.passport.user %></br>
+    <a href="/auth/revoke/sid/<%= key %>" >Revoke Session</a>
+    </p>
+<% } %>
+<a href="/dashboard" class="btn btn-secondary">Go To Dashboard</a>
+
